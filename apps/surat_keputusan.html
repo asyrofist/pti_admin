@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head>
+    <title>Surat Pernyataan Universitas Hang Tuah Surabaya</title>
+    <meta charset="utf-8">
+    <style>
+        #judul{
+            text-align:center;
+        }
+
+        #halaman{
+            width: auto; 
+            height: auto; 
+            position: absolute; 
+            border: 1px solid; 
+            padding-top: 30px; 
+            padding-left: 30px; 
+            padding-right: 30px; 
+            padding-bottom: 80px;
+        }
+
+    </style>
+
+</head>`
+
+<body>
+    <div id=halaman>
+        <img src="img/surat_keputusan.png" width= auto height= auto>
+        <h3 id=judul>SURAT KEPUTUSAN</h3>
+
+        <!-- <p>Saya yang bertanda tangan di bawah ini :</p> -->
+
+        <div style="text-align: center; float: center;">{{ dekan_fakultas }}</div><br>
+        <div style="text-align: center; float: center;">{{ nomor_surat_keputusan }}</div><br>
+
+        <h4 id=tentang; style="text-align:center;">TENTANG</h4>
+        <div style="text-align: center; float: center;">{{ perihal }}</div><br>
+        <div style="text-align: center; float: center;">{{ semester }}</div><br>
+
+        <table>
+            <tr>
+                <td style="width: 30%;">Menimbang</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 65%;">{{ menimbang }}</td>
+            </tr>
+            <tr>
+                <td style="width: 30%;">Mengingat</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 65%;">{{ mengingat }}</td>
+            </tr>
+        </table>
+        
+        <table>
+            <h4 id=pemutusan; style="text-align: center;">MEMUTUSKAN</h4>
+            <tr>
+                <td style="width: 30%; vertical-align: top;">Memperhatikan</td>
+                <td style="width: 5%; vertical-align: top;">:</td>
+                <td style="width: 65%;">{{ memperhatikan }}</td>
+            </tr>
+            <tr>
+                <td style="width: 30%;">Menetapkan</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 65%;">{{ menetapkan }}</td>
+            </tr>
+        </table>
+
+        <div style="width: 50%; text-align: left; float: right;">{{ tempat_penetapan }}, {{ tanggal_penetapan }}</div><br>
+        <div style="width: 50%; text-align: left; float: right;">{{ status_pejabat }}</div>  <br> <br> <br>
+        <div style="text-align: left; float: right;"> 
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=
+                {{ 
+                    dekan_fakultas,
+                    nomor_surat_keputusan,
+                    tempat_penetapan,
+                    tanggal_penetapan,
+                    status_pejabat,
+                    pejabat_yang_menandatangani,
+                    tembusan,
+                }}&amp;size=100x100"width= auto height= auto/>
+        </div> <br> <br> <br> <br> <br> <br> <br> <br>  <br>
+        <div style="width: 50%; text-align: left; float: right;">{{ pejabat_yang_menandatangani }}</div>
+        <div style="width: 50%; text-align: left; float: left;">{{ tembusan }}</div>
+      </div>
+    
+</body>
+
+</html>
