@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>Surat Pernyataan Universitas Hang Tuah Surabaya</title>
+    <title>Petikan Keputusan Universitas Hang Tuah Surabaya</title>
     <meta charset="utf-8">
     <style>
         #judul{
@@ -25,7 +25,7 @@
 <body>
     <div id=halaman>
         <img src= "../img/kop_surat.png" width= auto height= auto>
-        <h3 id=judul>SURAT KEPUTUSAN</h3>
+        <h3 id=judul>PETIKAN KEPUTUSAN</h3>
 
         <!-- <p>Saya yang bertanda tangan di bawah ini :</p> -->
 
@@ -63,7 +63,10 @@
             </tr>
         </table>
 
-        <div style="width: 50%; text-align: left; float: right;">{{ tempat_penetapan }}, {{ tanggal_penetapan }}</div><br>
+        <div style="width: 50%; text-align: left; float: right;">Ditetapkan di: {{ tempat_penetapan }}</div><br>
+        <div style="width: 50%; text-align: left; float: right;">Pada Tanggal: {{ tanggal_penetapan }}</div><br>
+        <div style="width: 50%; text-align: left; float: left;">Untuk petikan sesuai dengan aslinya</div><br>
+        <div style="width: 50%; text-align: left; float: left;">{{ status_pejabat2 }}</div>
         <div style="width: 50%; text-align: left; float: right;">{{ status_pejabat }}</div>  <br> <br> <br>
         <div style="text-align: left; float: right;"> 
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=
@@ -78,7 +81,7 @@
                 }}&amp;size=100x100"width= auto height= auto/>
         </div> <br> <br> <br> <br> <br> <br> <br> <br>  <br>
         <div style="width: 50%; text-align: left; float: right;">{{ pejabat_yang_menandatangani }}</div>
-        <div style="width: 50%; text-align: left; float: left;">{{ tembusan }}</div>
+        <div style="width: 50%; text-align: left; float: left;">{{ pejabat_yang_menandatangani2 }}</div>
       </div>
     
 </body>

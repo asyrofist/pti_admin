@@ -9,7 +9,7 @@ import io
 
 def app():
     # st.set_page_config(layout="centered", page_icon="img/hangtuah_icon.jpg", page_title="Surat Keputusan Generator")
-    st.title("Surat Keputusan PDF Generator")
+    st.title("Surat Tugas PDF Generator")
 
     st.write(
         "Aplikasi ini digunakan untuk membuat dokumen dalam bentuk pdf"
@@ -18,26 +18,23 @@ def app():
     left, right = st.columns(2)
 
     right.write("Here's the template we'll be using:")
-    right.image("img/surat_keputusan.png", width=300)
+    right.image("img/surat_tugas.png", width=300)
 
     env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-    template = env.get_template("apps/surat_keputusan.html")
+    template = env.get_template("apps/surat_tugas.html")
 
 
     left.write("Fill in the data:")
     form = left.form("template_form")
-    dekan_fakultas = form.text_input("masukkan ditujukan ke dekan fakultas anda", placeholder= "DEKAN FAKULTAS KEDOKTERAN UNIVERSITAS HANG TUAH")
-    nomor_surat_keputusan = form.text_input("masukkan nomor surat keputusan anda", placeholder= "Kep./058/UHT.B0.05/VIII/2021")
-    perihal = form.text_input("masukkan perihal pemberian surat keputusan anda", placeholder= "PENGANGKATAN TENAGA PENGAJAR")
-    semester = form.text_input("masukkan semester berapa pemberian surat keputusan", placeholder= "SEMESTER GASAL TAHUN AKADEMIK 2021/2022")
-    menimbang = form.text_area("masukkan pertimbangan surat keputusan", placeholder= "Bahwa untuk pengangkutan tenaga pengajar pada Fakultas Kedokteran Gigi Universitas Hang Tuah")
-    mengingat = form.text_area("masukkan pengingat surat keputusan", placeholder= "1. Undang-Undang No. 20 Tahun 2003 tentang Sistem Pendidikan Nasional <br> 2. Peraturan Pemerintah No. 60 Tahun 1999 Tentang Pendidikan Tinggi")
-    memperhatikan = form.text_area("masukkan perhatian surat keputusan ditujukan untuk siapa", placeholder= "Kalender Akademik Universitas Hang Tuah Akademik 2021/2022")
-    menetapkan = form.text_area("masukkan penetapan surat keputusan", placeholder= "1. Undang-Undang No. 20 Tahun 2003 Tentang Sistem Pendidikan Nasional <br> 2. Peraturan Pemerintah No. 60 Tahun 1999 Tentang Pendidikan Tinggi")
-    tempat_penetapan = form.text_input("masukkan tempat penetapan surat keputusan", placeholder= "Surabaya")
-    tanggal_penetapan = form.date_input("Tanggal Penetapan SK", datetime.now())
+    nomor_surat_keputusan = form.text_input("masukkan nomor surat keputusan anda", placeholder= "S.Gas/1796/UHT.A0/VIII/2021")
+    pertimbangan = form.text_input("masukkan pertimbangan surat tugas anda", placeholder= "Bahwa dipandang perlu mengeluarkan Surat Tugas dalam Rangka Dinas")
+    dasar = form.text_input("masukkan dasar pemberian surat tugas", placeholder= "1. Kepentingan dinas lembaga")
+    kepada = form.text_input("masukkan kepada surat tugas diberikan", placeholder= "Nama-nama dalam lampiran Surat Tugas")
+    untuk = form.text_area("masukkan peruntukan surat tugas", placeholder= "1. melaksanakan tugas disamping tugas dan tanggung jawab yang ada ditunjuk dalam kepanitian kegiaan vaksinasi massal di lingungan sivitas akademika universitas hang tuah dan masyarakat sekitar kampus UHT, sesuai daftar dalam lampiran surat. 2 Pelaksanaan kegiatan terhitung sejak surat dikeluarkan hingga selesai pelaksanaan, 3. melaksanakan tugas ini dengan seksama dan penuh rasa tanggung jawab.")
+    tempat_penetapan = form.text_input("masukkan tempat penetapan surat tugas", placeholder= "Surabaya")
+    tanggal_penetapan = form.date_input("Tanggal Penetapan Surat Tugas", datetime.now())
     status_pejabat = form.selectbox(
-        "Pilih status pejabat surat keputusan tersebut ditentukan",
+        "Pilih status pejabat surat tugas tersebut ditentukan",
         ["Rektor", "Wakil Rektor 1", "Wakil Rektor 2", 'Wakil Rektor 3', 
         'Dekan FVP', 'Dekan FTIK', 'Dekan FISIP', 'Dekan FH', 'Dekan F.PSI',
         'Dekan FK', 'Dekan FKG',
@@ -45,7 +42,7 @@ def app():
         'Ka. Biro Perencanaan dan Pengembangan', 'Ka. Biro Kepegawaian', 
         'Ka. Biro Administrasi Keuangan', 'Ka. Biro Rumah Tanggan', 'Ka. UPT KS & Humas',
         'Ka. Perpustakaan', 'Ka. Pusat Teknologi Informasi'],
-        index=0,
+        index=10,
     )
     pejabat_yang_menandatangani = form.selectbox(
         "Pilih Pejabat yang menandatangi",
@@ -57,20 +54,17 @@ def app():
         'Bambang Sucahyo, drg. Sp. Ort.', 'Prof. Dr. Ir. Suparno, M.M., CIQaR'],
         index=0,
     )
-    tembusan = form.text_area("masukkan tembusan surat keputusan tersebut ditujukan", placeholder= "1. Ketua Pengurus Yayasan Nala <br> 2. Distribusi A,B,C")
+    tembusan = form.text_area("masukkan tembusan surat tugas tersebut ditujukan", placeholder= "1. Ketua Pengurus Yayasan Nala <br> 2. Distribusi A,B,C")
     agree = form.checkbox('saya setuju dengan segala kondisi data yang saya isi')
     submit = form.form_submit_button("Generate PDF")
     if agree:
         img_qrcode = qrcode.make(
             { 
-                "dekan_fakultas": dekan_fakultas,
                 "nomor_surat_keputusan": nomor_surat_keputusan,
-                "perihal": perihal,
-                "semester": semester,
-                "menimbang": menimbang,
-                "mengingat": mengingat,
-                "memperhatikan": memperhatikan,
-                "menetapkan": menetapkan,
+                "pertimbangan": pertimbangan,
+                "dasar": dasar,
+                "kepada": kepada,
+                "untuk": untuk,
                 "tempat_penetapan": tempat_penetapan,
                 "tanggal_penetapan": tanggal_penetapan,
                 "status_pejabat": status_pejabat,
@@ -81,14 +75,11 @@ def app():
 
         if submit:
             html = template.render(
-                dekan_fakultas= dekan_fakultas,
                 nomor_surat_keputusan= nomor_surat_keputusan,
-                perihal= perihal,
-                semester= semester,
-                menimbang= menimbang,
-                mengingat= mengingat,
-                memperhatikan= memperhatikan,
-                menetapkan= menetapkan,
+                pertimbangan= pertimbangan,
+                dasar= dasar,
+                kepada= kepada,
+                untuk= untuk,
                 tempat_penetapan= tempat_penetapan,
                 tanggal_penetapan= tanggal_penetapan,
                 status_pejabat= status_pejabat,

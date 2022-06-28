@@ -9,7 +9,7 @@ import io
 
 def app():
     # st.set_page_config(layout="centered", page_icon="img/hangtuah_icon.jpg", page_title="Surat Keputusan Generator")
-    st.title("Surat Keputusan PDF Generator")
+    st.title("Petikan Keputusan PDF Generator")
 
     st.write(
         "Aplikasi ini digunakan untuk membuat dokumen dalam bentuk pdf"
@@ -18,10 +18,10 @@ def app():
     left, right = st.columns(2)
 
     right.write("Here's the template we'll be using:")
-    right.image("img/surat_keputusan.png", width=300)
+    right.image("img/petikan_keputusan.png", width=300)
 
     env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
-    template = env.get_template("apps/surat_keputusan.html")
+    template = env.get_template("apps/petikan_keputusan.html")
 
 
     left.write("Fill in the data:")
@@ -47,6 +47,15 @@ def app():
         'Ka. Perpustakaan', 'Ka. Pusat Teknologi Informasi'],
         index=0,
     )
+    status_pejabat2 = form.selectbox(
+        "Pilih status pejabat surat keputusan tersebut ditentukan",
+        ["Kepala Tata Usaha",
+        'Ka. Lembaga Penjaminan Mutu', 'Ka. Lembaga Pengembangan Pendidikan dan Pengajaran',
+        'Ka. Biro Perencanaan dan Pengembangan', 'Ka. Biro Kepegawaian', 
+        'Ka. Biro Administrasi Keuangan', 'Ka. Biro Rumah Tanggan', 'Ka. UPT KS & Humas',
+        'Ka. Perpustakaan', 'Ka. Pusat Teknologi Informasi'],
+        index=0,
+    )
     pejabat_yang_menandatangani = form.selectbox(
         "Pilih Pejabat yang menandatangi",
         ["Dr. RA. Nora Leiyana, drg., M.H.,Kes., FICD", "Soenaryati, S.Sos", 
@@ -55,6 +64,11 @@ def app():
         'Dr. Ir. Sudirman, S.IP., S.E., M.AP., M.H', 
         'Dr. Dian Mulawarmanti, drg., MS.', 'Lita Agustian, drg., M.H. Kes.',
         'Bambang Sucahyo, drg. Sp. Ort.', 'Prof. Dr. Ir. Suparno, M.M., CIQaR'],
+        index=0,
+    )
+    pejabat_yang_menandatangani2 = form.selectbox(
+        "Pilih Pejabat yang menandatangi",
+        ["Soenaryati, S.Sos"],
         index=0,
     )
     tembusan = form.text_area("masukkan tembusan surat keputusan tersebut ditujukan", placeholder= "1. Ketua Pengurus Yayasan Nala <br> 2. Distribusi A,B,C")
@@ -92,7 +106,9 @@ def app():
                 tempat_penetapan= tempat_penetapan,
                 tanggal_penetapan= tanggal_penetapan,
                 status_pejabat= status_pejabat,
+                status_pejabat2= status_pejabat2,
                 pejabat_yang_menandatangani= pejabat_yang_menandatangani,
+                pejabat_yang_menandatangani2= pejabat_yang_menandatangani2,
                 tembusan= tembusan,
                 img_qrcode= img_qrcode,
                 date=date.today().strftime("%B %d, %Y"),

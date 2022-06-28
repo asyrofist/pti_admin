@@ -25,41 +25,36 @@
 <body>
     <div id=halaman>
         <img src= "../img/kop_surat.png" width= auto height= auto>
-        <h3 id=judul>SURAT KEPUTUSAN</h3>
+        <h3 id=judul>SURAT TUGAS</h3>
 
         <!-- <p>Saya yang bertanda tangan di bawah ini :</p> -->
 
-        <div style="text-align: center; float: center;">{{ dekan_fakultas }}</div><br>
         <div style="text-align: center; float: center;">{{ nomor_surat_keputusan }}</div><br>
 
-        <h4 id=tentang; style="text-align:center;">TENTANG</h4>
-        <div style="text-align: center; float: center;">{{ perihal }}</div><br>
-        <div style="text-align: center; float: center;">{{ semester }}</div><br>
-
         <table>
             <tr>
-                <td style="width: 30%;">Menimbang</td>
+                <td style="width: 30%;">Pertimbangan</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ menimbang }}</td>
+                <td style="width: 65%;">{{ pertimbangan }}</td>
             </tr>
             <tr>
-                <td style="width: 30%;">Mengingat</td>
+                <td style="width: 30%;">Dasar</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ mengingat }}</td>
+                <td style="width: 65%;">{{ dasar }}</td>
             </tr>
         </table>
-        
+
         <table>
-            <h4 id=pemutusan; style="text-align: center;">MEMUTUSKAN</h4>
+            <h4 id=pemutusan; style="text-align: center;">DITUGASKAN</h4>
             <tr>
-                <td style="width: 30%; vertical-align: top;">Memperhatikan</td>
+                <td style="width: 30%; vertical-align: top;">Kepada</td>
                 <td style="width: 5%; vertical-align: top;">:</td>
-                <td style="width: 65%;">{{ memperhatikan }}</td>
+                <td style="width: 65%;">{{ kepada }}</td>
             </tr>
             <tr>
-                <td style="width: 30%;">Menetapkan</td>
+                <td style="width: 30%;">Untuk</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ menetapkan }}</td>
+                <td style="width: 65%;">{{ untuk }}</td>
             </tr>
         </table>
 
@@ -68,7 +63,6 @@
         <div style="text-align: left; float: right;"> 
             <img src="https://api.qrserver.com/v1/create-qr-code/?data=
                 {{ 
-                    dekan_fakultas,
                     nomor_surat_keputusan,
                     tempat_penetapan,
                     tanggal_penetapan,
