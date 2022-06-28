@@ -30,10 +30,10 @@ def app():
     nomor_surat_keputusan = form.text_input("masukkan nomor surat keputusan anda", placeholder= "Kep./058/UHT.B0.05/VIII/2021")
     perihal = form.text_input("masukkan perihal pemberian surat keputusan anda", placeholder= "PENGANGKATAN TENAGA PENGAJAR")
     semester = form.text_input("masukkan semester berapa pemberian surat keputusan", placeholder= "SEMESTER GASAL TAHUN AKADEMIK 2021/2022")
-    menimbang = form.text_area("masukkan pertimbangan surat keputusan", placeholder= "Bahwa untuk pengangkutan tenaga pengajar pada Fakultas Kedokteran Gigi Universitas Hang Tuah")
-    mengingat = form.text_area("masukkan pengingat surat keputusan", placeholder= "1. Undang-Undang No. 20 Tahun 2003 tentang Sistem Pendidikan Nasional <br> 2. Peraturan Pemerintah No. 60 Tahun 1999 Tentang Pendidikan Tinggi")
-    memperhatikan = form.text_area("masukkan perhatian surat keputusan ditujukan untuk siapa", placeholder= "Kalender Akademik Universitas Hang Tuah Akademik 2021/2022")
-    menetapkan = form.text_area("masukkan penetapan surat keputusan", placeholder= "1. Undang-Undang No. 20 Tahun 2003 Tentang Sistem Pendidikan Nasional <br> 2. Peraturan Pemerintah No. 60 Tahun 1999 Tentang Pendidikan Tinggi")
+    menimbang = form.text_area("masukkan pertimbangan surat keputusan", placeholder= "Bahwa untuk pengangkutan tenaga pengajar pada Fakultas Kedokteran Gigi Universitas Hang Tuah").splitlines()
+    mengingat = form.text_area("masukkan pengingat surat keputusan", placeholder= "1. Undang-Undang No. 20 Tahun 2003 tentang Sistem Pendidikan Nasional <br> 2. Peraturan Pemerintah No. 60 Tahun 1999 Tentang Pendidikan Tinggi").splitlines()
+    memperhatikan = form.text_area("masukkan perhatian surat keputusan ditujukan untuk siapa", placeholder= "Kalender Akademik Universitas Hang Tuah Akademik 2021/2022").splitlines()
+    menetapkan = form.text_area("masukkan penetapan surat keputusan", placeholder= "1. Undang-Undang No. 20 Tahun 2003 Tentang Sistem Pendidikan Nasional <br> 2. Peraturan Pemerintah No. 60 Tahun 1999 Tentang Pendidikan Tinggi").splitlines()
     tempat_penetapan = form.text_input("masukkan tempat penetapan surat keputusan", placeholder= "Surabaya")
     tanggal_penetapan = form.date_input("Tanggal Penetapan SK", datetime.now())
     status_pejabat = form.selectbox(
@@ -45,7 +45,7 @@ def app():
         'Ka. Biro Perencanaan dan Pengembangan', 'Ka. Biro Kepegawaian', 
         'Ka. Biro Administrasi Keuangan', 'Ka. Biro Rumah Tanggan', 'Ka. UPT KS & Humas',
         'Ka. Perpustakaan', 'Ka. Pusat Teknologi Informasi'],
-        index=0,
+        index=10,
     )
     status_pejabat2 = form.selectbox(
         "Pilih status pejabat surat keputusan tersebut ditentukan",
@@ -71,7 +71,7 @@ def app():
         ["Soenaryati, S.Sos"],
         index=0,
     )
-    tembusan = form.text_area("masukkan tembusan surat keputusan tersebut ditujukan", placeholder= "1. Ketua Pengurus Yayasan Nala <br> 2. Distribusi A,B,C")
+    tembusan = form.text_area("masukkan tembusan surat keputusan tersebut ditujukan", placeholder= "1. Ketua Pengurus Yayasan Nala <br> 2. Distribusi A,B,C").splitlines()
     agree = form.checkbox('saya setuju dengan segala kondisi data yang saya isi')
     submit = form.form_submit_button("Generate PDF")
     if agree:

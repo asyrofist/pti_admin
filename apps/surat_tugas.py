@@ -27,9 +27,9 @@ def app():
     left.write("Fill in the data:")
     form = left.form("template_form")
     nomor_surat_keputusan = form.text_input("masukkan nomor surat keputusan anda", placeholder= "S.Gas/1796/UHT.A0/VIII/2021")
-    pertimbangan = form.text_input("masukkan pertimbangan surat tugas anda", placeholder= "Bahwa dipandang perlu mengeluarkan Surat Tugas dalam Rangka Dinas")
-    dasar = form.text_input("masukkan dasar pemberian surat tugas", placeholder= "1. Kepentingan dinas lembaga")
-    kepada = form.text_input("masukkan kepada surat tugas diberikan", placeholder= "Nama-nama dalam lampiran Surat Tugas")
+    pertimbangan = form.text_area("masukkan pertimbangan surat tugas anda", placeholder= "Bahwa dipandang perlu mengeluarkan Surat Tugas dalam Rangka Dinas").splitlines()
+    dasar = form.text_area("masukkan dasar pemberian surat tugas", placeholder= "1. Kepentingan dinas lembaga").splitlines()
+    kepada = form.text_area("masukkan kepada surat tugas diberikan", placeholder= "Nama-nama dalam lampiran Surat Tugas").splitlines()
     untuk = form.text_area("masukkan peruntukan surat tugas", placeholder= "1. melaksanakan tugas disamping tugas dan tanggung jawab yang ada ditunjuk dalam kepanitian kegiaan vaksinasi massal di lingungan sivitas akademika universitas hang tuah dan masyarakat sekitar kampus UHT, sesuai daftar dalam lampiran surat. 2 Pelaksanaan kegiatan terhitung sejak surat dikeluarkan hingga selesai pelaksanaan, 3. melaksanakan tugas ini dengan seksama dan penuh rasa tanggung jawab.")
     tempat_penetapan = form.text_input("masukkan tempat penetapan surat tugas", placeholder= "Surabaya")
     tanggal_penetapan = form.date_input("Tanggal Penetapan Surat Tugas", datetime.now())
@@ -54,7 +54,7 @@ def app():
         'Bambang Sucahyo, drg. Sp. Ort.', 'Prof. Dr. Ir. Suparno, M.M., CIQaR'],
         index=0,
     )
-    tembusan = form.text_area("masukkan tembusan surat tugas tersebut ditujukan", placeholder= "1. Ketua Pengurus Yayasan Nala <br> 2. Distribusi A,B,C")
+    tembusan = form.text_area("masukkan tembusan surat tugas tersebut ditujukan", placeholder= "1. Ketua Pengurus Yayasan Nala <br> 2. Distribusi A,B,C").splitlines()
     agree = form.checkbox('saya setuju dengan segala kondisi data yang saya isi')
     submit = form.form_submit_button("Generate PDF")
     if agree:

@@ -24,7 +24,9 @@
 
 <body>
     <div id=halaman>
-        <img src= "../img/kop_surat.png" width= auto height= auto>
+        <!-- <img src= "../img/kop_surat.png" width= auto height= auto> -->
+        <img src= "https://hangtuah.ac.id/wp-content/uploads/2017/06/logo-uht.png" width= auto height= auto>
+
         <h3 id=judul>PETIKAN KEPUTUSAN</h3>
 
         <!-- <p>Saya yang bertanda tangan di bawah ini :</p> -->
@@ -45,7 +47,9 @@
             <tr>
                 <td style="width: 30%;">Mengingat</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ mengingat }}</td>
+                {% for ix in mengingat %}
+                    <td style="width: 65%;">{{ ix }}</td>
+                {% endfor %}
             </tr>
         </table>
         
@@ -59,12 +63,14 @@
             <tr>
                 <td style="width: 30%;">Menetapkan</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ menetapkan }}</td>
+                {% for iy in menetapkan %}
+                    <td style="width: 65%;">{{ iy }}</td>
+                {% endfor %}
             </tr>
-        </table>
+        </table> <br>
 
-        <div style="width: 50%; text-align: left; float: right;">Ditetapkan di: {{ tempat_penetapan }}</div><br>
-        <div style="width: 50%; text-align: left; float: right;">Pada Tanggal: {{ tanggal_penetapan }}</div><br>
+        <div style="width: 50%; text-align: left; float: right;">Ditetapkan di: {{ tempat_penetapan }}</div><br><br>
+        <div style="width: 50%; text-align: left; float: right;">Pada Tanggal: {{ tanggal_penetapan }}</div><br><br>
         <div style="width: 50%; text-align: left; float: left;">Untuk petikan sesuai dengan aslinya</div><br>
         <div style="width: 50%; text-align: left; float: left;">{{ status_pejabat2 }}</div>
         <div style="width: 50%; text-align: left; float: right;">{{ status_pejabat }}</div>  <br> <br> <br>
