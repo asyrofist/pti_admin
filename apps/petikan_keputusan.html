@@ -42,7 +42,9 @@
             <tr>
                 <td style="width: 30%;">Menimbang</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ menimbang }}</td>
+                {% for num_menimbang in menimbang %}
+                    <td style="width: 65%;">{{ num_menimbang }}</td>
+                {% endfor %}
             </tr>
             <tr>
                 <td style="width: 30%;">Mengingat</td>
@@ -58,7 +60,9 @@
             <tr>
                 <td style="width: 30%; vertical-align: top;">Memperhatikan</td>
                 <td style="width: 5%; vertical-align: top;">:</td>
-                <td style="width: 65%;">{{ memperhatikan }}</td>
+                {% for num_memperhatikan in memperhatikan %}
+                    <td style="width: 65%;">{{ num_memperhatikan }}</td>
+                {% endfor %}
             </tr>
             <tr>
                 <td style="width: 30%;">Menetapkan</td>

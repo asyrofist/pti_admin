@@ -36,7 +36,9 @@
             <tr>
                 <td style="width: 30%;">Pertimbangan</td>
                 <td style="width: 5%;">:</td>
-                <td style="width: 65%;">{{ pertimbangan }}</td>
+                {% for num_timbang in pertimbangan %}
+                    <td style="width: 65%;">{{ num_timbang }}</td>
+                {% endfor %}
             </tr>
             <tr>
                 <td style="width: 30%;">Dasar</td>
@@ -52,13 +54,15 @@
             <tr>
                 <td style="width: 30%; vertical-align: top;">Kepada</td>
                 <td style="width: 5%; vertical-align: top;">:</td>
-                <td style="width: 65%;">{{ kepada }}</td>
+                {% for num_kepada in kepada %}
+                    <td style="width: 65%;">{{ num_kepada }}</td>
+                {% endfor %}
             </tr>
             <tr>
                 <td style="width: 30%;">Untuk</td>
                 <td style="width: 5%;">:</td>
-                {% for iy in untuk %}
-                    <td style="width: 65%;">{{ iy }}</td>
+                {% for num_untuk in untuk %}
+                    <td style="width: 65%;">{{ num_untuk }}</td>
                 {% endfor %}
             </tr>
         </table> <br>

@@ -30,7 +30,7 @@ def app():
     pertimbangan = form.text_area("masukkan pertimbangan surat tugas anda", placeholder= "Bahwa dipandang perlu mengeluarkan Surat Tugas dalam Rangka Dinas").splitlines()
     dasar = form.text_area("masukkan dasar pemberian surat tugas", placeholder= "1. Kepentingan dinas lembaga").splitlines()
     kepada = form.text_area("masukkan kepada surat tugas diberikan", placeholder= "Nama-nama dalam lampiran Surat Tugas").splitlines()
-    untuk = form.text_area("masukkan peruntukan surat tugas", placeholder= "1. melaksanakan tugas disamping tugas dan tanggung jawab yang ada ditunjuk dalam kepanitian kegiaan vaksinasi massal di lingungan sivitas akademika universitas hang tuah dan masyarakat sekitar kampus UHT, sesuai daftar dalam lampiran surat. 2 Pelaksanaan kegiatan terhitung sejak surat dikeluarkan hingga selesai pelaksanaan, 3. melaksanakan tugas ini dengan seksama dan penuh rasa tanggung jawab.")
+    untuk = form.text_area("masukkan peruntukan surat tugas", placeholder= "1. melaksanakan tugas disamping tugas dan tanggung jawab yang ada ditunjuk dalam kepanitian kegiaan vaksinasi massal di lingungan sivitas akademika universitas hang tuah dan masyarakat sekitar kampus UHT, sesuai daftar dalam lampiran surat. 2 Pelaksanaan kegiatan terhitung sejak surat dikeluarkan hingga selesai pelaksanaan, 3. melaksanakan tugas ini dengan seksama dan penuh rasa tanggung jawab.").splitlines()
     tempat_penetapan = form.text_input("masukkan tempat penetapan surat tugas", placeholder= "Surabaya")
     tanggal_penetapan = form.date_input("Tanggal Penetapan Surat Tugas", datetime.now())
     status_pejabat = form.selectbox(
