@@ -2,4 +2,3 @@ pdfkit
 streamlit
 qrcode
 streamlit-option-menu
-pypiwin32
