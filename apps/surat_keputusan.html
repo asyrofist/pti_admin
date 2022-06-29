@@ -44,35 +44,36 @@
                 <td style="width: 30%;">Menimbang</td>
                 <td style="width: 5%;">:</td>
                 {% for num_menimbang in menimbang %}
-                    <td style="width: 65%;">{{ num_menimbang }}</td>
+                <td style="width: 65%;">{{ num_menimbang }} <br> </td>
                 {% endfor %}
             </tr>
+            <br>
             <tr>
                 <td style="width: 30%;">Mengingat</td>
                 <td style="width: 5%;">:</td>
                 {% for ix in mengingat %}
-                    <td style="width: 65%;">{{ ix }}</td>
+                <td style="width: 65%;">{{ ix }} <br> </td>
                 {% endfor %}
             </tr>
         </table>
-        
         <table>
             <h4 id=pemutusan; style="text-align: center;">MEMUTUSKAN</h4>
             <tr>
                 <td style="width: 30%; vertical-align: top;">Memperhatikan</td>
                 <td style="width: 5%; vertical-align: top;">:</td>
                 {% for num_memperhatikan in memperhatikan %}
-                    <td style="width: 65%;">{{ num_memperhatikan }}</td>
+                <td style="width: 65%;">{{ num_memperhatikan }} <br> </td>
                 {% endfor %}
             </tr>
             <tr>
                 <td style="width: 30%;">Menetapkan</td>
                 <td style="width: 5%;">:</td>
                 {% for iy in menetapkan %}
-                    <td style="width: 65%;">{{ iy }}</td>
+                <!-- <td style="width: 65%;">{{ iy }}</td> -->
+                <div style="width: 65%; text-align: left; float: left;">{{ iz }}</div>
                 {% endfor %}
             </tr>
-        </table> <br>
+        </table> <br> <br>
 
         <div style="width: 50%; text-align: left; float: right;">Ditetapkan di: {{ tempat_penetapan }}</div><br><br>
         <div style="width: 50%; text-align: left; float: right;">Pada Tanggal: {{ tanggal_penetapan }}</div><br><br>

@@ -4,6 +4,7 @@
 """
 import streamlit as st
 
+
 class MultiApp:
     """Framework for combining multiple streamlit applications.
     Usage:
@@ -41,9 +42,10 @@ class MultiApp:
         })
 
     def run(self):
-        app = st.sidebar.selectbox(
+        app = st.selectbox(
             'Go To',
             self.apps,
             format_func=lambda app: app['title'])
 
         app['function']()
+
