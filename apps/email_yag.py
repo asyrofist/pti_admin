@@ -12,10 +12,10 @@ def app():
     show_file = st.empty()
     if uploaded_file is not None:
         show_file.info("File received!")
-        for page_layout in extract_pages(uploaded_file):
-            for element in page_layout:
-                pdf_display = f'<iframe src="data:application/pdf;base64,{element}" width="800" height="800" type="application/pdf"></iframe>'
-                st.markdown(pdf_display, unsafe_allow_html=True)
+        # for page_layout in extract_pages(uploaded_file):
+        #     for element in page_layout:
+        #         pdf_display = f'<iframe src="data:application/pdf;base64,{element}" width="800" height="800" type="application/pdf"></iframe>'
+        #         st.markdown(pdf_display, unsafe_allow_html=True)
 
     if st.button("Send Email"):
         try:
