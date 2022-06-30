@@ -1,7 +1,6 @@
 import streamlit as st
 from multiapp import MultiApp
 from apps import home, surat_keputusan, surat_tugas, petikan_keputusan,invoice, email_python, email_yag  # import your app modules here
-from streamlit_option_menu import option_menu
 
 st.set_page_config(layout="centered", page_icon="img/hangtuah_icon.jpg", page_title="Surat Keputusan Generator")
 
