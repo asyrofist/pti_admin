@@ -1,11 +1,15 @@
+import email, smtplib, ssl, os, streamlit as st
+from email import encoders
+from email.mime.base import MIMEBase
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+import qrcode, pdfkit, qrcode, streamlit as st, base64, io
 from enum import auto
-import qrcode, pdfkit, qrcode, streamlit as st
 from logging import PlaceHolder, disable
 from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 from datetime import date, datetime
 from streamlit.components.v1 import iframe
-import base64
-import io
 
 def app():
     # st.set_page_config(layout="centered", page_icon="img/hangtuah_icon.jpg", page_title="Surat Keputusan Generator")
@@ -89,7 +93,6 @@ def app():
                 date=date.today().strftime("%B %d, %Y"),
             )
 
-            # pdf = pdfkit.from_file(html,False)
             pdf = pdfkit.from_string(html, False)
             st.balloons()
 
@@ -100,3 +103,45 @@ def app():
                 file_name="{}.pdf".format(nomor_surat_keputusan),
                 mime="application/octet-stream",
             )
+
+            form2 = right.form("email_form")
+            subject = form2.text_input("An email with attachment from Python", placeholder="Enter Subject", key="subject")
+            body = form2.text_area("This is an email with attachment sent from Python", placeholder="Enter Body", key="body")
+            receiver_email = form2.text_input("masukkan email pengirim", placeholder="your@gmail.com", key="receiver_email")
+            sender_email = "asyrofi@hangtuah.ac.id"
+            password = "xrlqddxjncjyvjhb"
+            filename = pdf  # In same directory as script
+            submit_send_email = form2.form_submit_button("Send Email")
+            if submit_send_email:
+                try:
+                    message = MIMEMultipart() # Create a multipart message and set headers
+                    message["From"] = sender_email
+                    message["To"] = receiver_email
+                    message["Subject"] = subject
+                    message["Bcc"] = receiver_email  # Recommended for mass emails
+                    message.attach(MIMEText(body, "plain")) # Add body to email
+                    with open(filename, "rb") as attachment: # Open PDF file in binary mode            
+                        part = MIMEBase("application", "octet-stream") # Add file as application/octet-stream
+                        part.set_payload(attachment.read()) # Email client can usually download this automatically as attachment
+                    encoders.encode_base64(part) # Encode file in ASCII characters to send by email
+                    part.add_header( # Add header as key/value pair to attachment part
+                        "Content-Disposition",
+                        f"attachment; filename= {filename}",
+                    )
+                    message.attach(part) # Add attachment to message and convert message to string
+                    text = message.as_string()
+                    context = ssl.create_default_context() # Log in to server using secure context and send email
+                    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+                        server.login(sender_email, password)
+                        server.sendmail(sender_email, receiver_email, text)
+                        st.success("Email sent!")
+
+                except Exception as e:
+                    if subject == "":
+                        st.error("Please Fill Subject Field")
+                    elif password == "":
+                        st.error("Please Fill Password Field")
+                    elif receiver_email == "":
+                        st.error("Please Fill Receiver Email Field")
+
+
