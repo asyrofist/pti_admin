@@ -38,13 +38,13 @@ def app():
                 message["Subject"] = subject
                 message["Bcc"] = receiver_email  # Recommended for mass emails
                 message.attach(MIMEText(body, "plain")) # Add body to email
-                with open(element, "rb") as attachment: # Open PDF file in binary mode            
+                with open(uploaded_file, "rb") as attachment: # Open PDF file in binary mode            
                     part = MIMEBase("application", "octet-stream") # Add file as application/octet-stream
                     part.set_payload(attachment.read()) # Email client can usually download this automatically as attachment
                 encoders.encode_base64(part) # Encode file in ASCII characters to send by email
                 part.add_header( # Add header as key/value pair to attachment part
                     "Content-Disposition",
-                    f"attachment; filename= {element}",
+                    f"attachment; filename= {uploaded_file}",
                 )
                 message.attach(part) # Add attachment to message and convert message to string
                 text = message.as_string()

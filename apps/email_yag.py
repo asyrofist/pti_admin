@@ -24,7 +24,7 @@ def app():
                 to= receiver,
                 subject= subject_to,
                 contents= body, 
-                attachments= element,
+                attachments= uploaded_file,
 
             )
         except Exception as e:
