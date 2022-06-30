@@ -3,7 +3,6 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from pdfminer.high_level import extract_pages
 
 def show_pdf(file_path):
     with open(file_path,"rb") as f:
