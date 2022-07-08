@@ -2,3 +2,5 @@ streamlit
 pdfkit
 qrcode
 yagmail
+plotly
+pandas
